@@ -1,4 +1,5 @@
 var inquirer = require("inquirer")
+var fs = require("fs")
 
 inquirer.prompt([
     {
@@ -22,5 +23,24 @@ inquirer.prompt([
         message: "What is your github URL?"
     }
 ]).then(function(data){
-    console.log(data.nomen)
+    var htmlTemplate = `
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Mini Project</title>
+        </head>
+
+        <body>
+            <div id="name">Name: ${data.nomen}</div>
+            <div id="location">Location: ${data.location}</div>
+            <div id="bio">${data.bio}</div>
+            <div id="linkedin">${data.linkedin}</div>
+            <div id="github">${data.github}</div>
+        </body>
+    </html>
+    `
+    
+    fs.writeFile("portfolio.html", htmlTemplate, function(){
+        console.log(data.nomen)
+    })
 })
