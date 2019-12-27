@@ -28,9 +28,11 @@ inquirer.prompt([
     <html>
         <head>
             <title>Mini Project</title>
+            <link rel="stylesheet" type="text/css" href="assets/style.css">
         </head>
-
+    
         <body>
+            <header>${data.nomen}'s Amazing Portfolio</header>
             <div id="name">Name: ${data.nomen}</div>
             <div id="location">Location: ${data.location}</div>
             <div id="bio">${data.bio}</div>
@@ -41,6 +43,6 @@ inquirer.prompt([
     `
     
     fs.writeFile("portfolio.html", htmlTemplate, function(){
-        console.log(data.nomen)
+        
     })
 })
